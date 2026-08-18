@@ -4,6 +4,7 @@ import WhyChooseUs from "@/components/home/WhyChooseUs";
 import AboutZula from "@/components/home/AboutZula";
 import FeaturedJobs from "@/components/home/FeaturedJobs";
 import HowItWorks from "@/components/home/HowItWorks";
+import ForEmployers from "@/components/home/ForEmployers";
 import Testimonials from "@/components/home/Testimonials";
 import CtaBanner from "@/components/home/CtaBanner";
 
@@ -16,6 +17,7 @@ export default function Home() {
       <AboutZula />
       <FeaturedJobs />
       <HowItWorks />
+      <ForEmployers />
       <Testimonials />
       <CtaBanner />
     </main>

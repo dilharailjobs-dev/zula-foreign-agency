@@ -78,6 +78,14 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/employers"
+                  className="text-sm text-cream/70 hover:text-accent"
+                >
+                  For Employers
+                </Link>
+              </li>
             </ul>
           </div>
 
