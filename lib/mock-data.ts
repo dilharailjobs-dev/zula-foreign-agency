@@ -47,6 +47,11 @@ export const navLinks: NavLink[] = [
   { label: "Contact", href: "#contact" },
 ];
 
+export const legalLinks: NavLink[] = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms & Conditions", href: "/terms-and-conditions" },
+];
+
 export interface TrustStat {
   id: string;
   icon: LucideIcon;
@@ -58,26 +63,67 @@ export const trustStats: TrustStat[] = [
   {
     id: "license",
     icon: ShieldCheck,
-    value: "Licensed",
-    label: "Registered with the Bureau of Foreign Employment (Reg. No. BFE/2004/0187)",
+    value: "SLBFE Registration",
+    label: "License details will be published here once finalized with the Sri Lanka Bureau of Foreign Employment",
   },
   {
     id: "experience",
     icon: Award,
-    value: "20+ Years",
-    label: "Of experience placing candidates in overseas jobs",
+    value: "Experienced Team",
+    label: "Recruitment specialists who guide candidates through every step",
   },
   {
     id: "placements",
     icon: Users,
-    value: "12,400+",
-    label: "Successful placements to date",
+    value: "Candidate-First Approach",
+    label: "We prioritize transparent, verified placements over volume",
   },
   {
     id: "countries",
     icon: Globe2,
-    value: "9 Countries",
-    label: "Partner countries across the Middle East and Asia",
+    value: "Growing Partner Network",
+    label: "Employer partners across the Middle East and Asia",
+  },
+];
+
+export interface ContactInfo {
+  address: string;
+  phone: string;
+  email: string;
+}
+
+export const contactInfo: ContactInfo = {
+  address: "428/1, Hokandara North, Hokandara, Sri Lanka",
+  phone: "+94 11 215 7810",
+  email: "info@zulaachzakot.com",
+};
+
+export interface CompanyValue {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export const companyValues: CompanyValue[] = [
+  {
+    id: "integrity",
+    title: "Integrity",
+    description: "We give candidates accurate information about roles, employers, and costs, before they commit to anything.",
+  },
+  {
+    id: "transparency",
+    title: "Transparency",
+    description: "No hidden fees or last-minute conditions. What's agreed upfront is what's delivered.",
+  },
+  {
+    id: "worker-protection",
+    title: "Worker Protection",
+    description: "Candidate wellbeing and safe migration come before any placement target.",
+  },
+  {
+    id: "accountability",
+    title: "Accountability",
+    description: "We stay reachable and responsible for candidates after they've started their new role abroad.",
   },
 ];
 

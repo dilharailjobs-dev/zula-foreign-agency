@@ -2,7 +2,7 @@ import { whyChooseUs } from "@/lib/mock-data";
 
 export default function WhyChooseUs() {
   return (
-    <section id="about" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="font-display text-3xl font-bold text-ink sm:text-4xl">
           Why Job Seekers Choose Us

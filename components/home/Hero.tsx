@@ -19,7 +19,7 @@ export default function Hero() {
 
       <div className="relative mx-auto flex max-w-7xl flex-col items-start px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-32">
         <span className="rounded-full bg-cream/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-cream ring-1 ring-cream/20">
-          Licensed &amp; Trusted Since 2004
+          Committed to Safe, Transparent Recruitment
         </span>
 
         <h1 className="mt-6 max-w-2xl font-display text-4xl font-bold leading-tight text-cream sm:text-5xl lg:text-6xl">
@@ -27,9 +27,9 @@ export default function Hero() {
         </h1>
 
         <p className="mt-6 max-w-xl text-base text-cream/80 sm:text-lg">
-          For over 20 years, we&apos;ve helped more than 12,000 job seekers
-          find safe, verified employment abroad, with full documentation
-          support at every step of the way.
+          We connect job seekers with verified overseas employers and provide
+          full documentation support, from application through to placement
+          and beyond.
         </p>
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row">

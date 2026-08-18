@@ -1,6 +1,7 @@
 import Hero from "@/components/home/Hero";
 import TrustStrip from "@/components/home/TrustStrip";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
+import AboutZula from "@/components/home/AboutZula";
 import FeaturedJobs from "@/components/home/FeaturedJobs";
 import HowItWorks from "@/components/home/HowItWorks";
 import Testimonials from "@/components/home/Testimonials";
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <TrustStrip />
       <WhyChooseUs />
+      <AboutZula />
       <FeaturedJobs />
       <HowItWorks />
       <Testimonials />

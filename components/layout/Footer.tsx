@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { groupSites, navLinks } from "@/lib/mock-data";
+import { contactInfo, groupSites, legalLinks, navLinks } from "@/lib/mock-data";
 
 const socialLinks = [
   {
@@ -26,10 +27,21 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-display text-lg font-bold text-cream">
-              Zula Foreign Agency
-            </p>
-            <p className="mt-3 max-w-xs text-sm text-cream/70">
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-cream p-1.5">
+                <Image
+                  src="/images/brand/logo-icon.jpg"
+                  alt="Zula Foreign Agency"
+                  width={28}
+                  height={20}
+                  className="h-full w-auto"
+                />
+              </span>
+              <p className="font-display text-lg font-bold text-cream">
+                Zula Foreign Agency
+              </p>
+            </div>
+            <p className="mt-4 max-w-xs text-sm text-cream/70">
               Your trusted partner for safe, transparent overseas employment,
               from application to placement and beyond.
             </p>
@@ -74,15 +86,15 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-cream/70">
               <li className="flex items-start gap-2.5">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-accent" />
-                <span>142 Galle Road, Colombo 03, Sri Lanka</span>
+                <span>{contactInfo.address}</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone size={18} className="shrink-0 text-accent" />
-                <span>+94 11 234 5678</span>
+                <span>{contactInfo.phone}</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail size={18} className="shrink-0 text-accent" />
-                <span>info@zulaforeignagency.com</span>
+                <span>{contactInfo.email}</span>
               </li>
             </ul>
           </div>
@@ -112,12 +124,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-cream/10 pt-6 text-xs text-cream/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-cream/10 pt-6 text-xs text-cream/50 sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} Zula Foreign Agency. All rights
             reserved.
           </p>
-          <p>Licensed Foreign Employment Agency &mdash; Reg. No. BFE/2004/0187</p>
+          <div className="flex items-center gap-4">
+            {legalLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="hover:text-accent">
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <p>Foreign Employment Agency, Sri Lanka &mdash; SLBFE registration details to be published here</p>
         </div>
       </div>
     </footer>

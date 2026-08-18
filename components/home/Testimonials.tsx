@@ -8,10 +8,11 @@ export default function Testimonials() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-display text-3xl font-bold text-cream sm:text-4xl">
-            Stories From Our Candidates
+            What Candidates Can Expect
           </h2>
           <p className="mt-4 text-base text-cream/70">
-            Real placements, in their own words.
+            Illustrative examples of the experience we aim to deliver. Real
+            candidate stories will replace these once we have them.
           </p>
         </div>
 
@@ -19,8 +20,11 @@ export default function Testimonials() {
           {testimonials.map((testimonial) => (
             <figure
               key={testimonial.id}
-              className="flex flex-col rounded-2xl bg-cream p-6 shadow-sm"
+              className="relative flex flex-col rounded-2xl bg-cream p-6 shadow-sm"
             >
+              <span className="absolute right-4 top-4 rounded-full bg-primary-light px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-primary">
+                Illustrative
+              </span>
               <Quote className="text-accent" size={28} />
               <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-ink-soft">
                 &ldquo;{testimonial.quote}&rdquo;
