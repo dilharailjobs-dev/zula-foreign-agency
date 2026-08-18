@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { navLinks } from "@/lib/mock-data";
+import { groupSites, navLinks } from "@/lib/mock-data";
 
 const socialLinks = [
   {
@@ -33,12 +33,24 @@ export default function Footer() {
               Your trusted partner for safe, transparent overseas employment,
               from application to placement and beyond.
             </p>
-            <p className="mt-4 text-xs text-cream/50">
-              A member of the Zula Achzakot business group.{" "}
-              <a href="#" className="underline hover:text-accent">
-                Visit Zula Achzakot
-              </a>
+            <p className="mt-6 text-sm font-semibold text-cream">
+              Zula Achzakot Group
             </p>
+            <ul className="mt-3 space-y-2">
+              {groupSites.map((site) => (
+                <li key={site.id}>
+                  <a
+                    href={site.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-cream/70 underline decoration-cream/30 underline-offset-2 hover:text-accent hover:decoration-accent"
+                  >
+                    {site.name}
+                  </a>
+                  <span className="text-xs text-cream/40"> &mdash; {site.description}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>

@@ -16,6 +16,28 @@ export interface NavLink {
   href: string;
 }
 
+export interface GroupSite {
+  id: string;
+  name: string;
+  description: string;
+  href: string;
+}
+
+export const groupSites: GroupSite[] = [
+  {
+    id: "zula-achzakot",
+    name: "Zula Achzakot",
+    description: "Parent business group",
+    href: "https://dilharailjobs-dev.github.io/zula-achzakot",
+  },
+  {
+    id: "zula-hiriketiya",
+    name: "Zula Hiriketiya",
+    description: "Sister venture — surf hostel in Hiriketiya",
+    href: "https://dilharailjobs-dev.github.io/zula-hostels/",
+  },
+];
+
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Jobs", href: "/jobs" },
