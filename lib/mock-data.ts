@@ -165,79 +165,6 @@ export const whyChooseUs: Feature[] = [
   },
 ];
 
-export interface JobCategory {
-  id: string;
-  title: string;
-  country: string;
-  flag: string;
-  category: string;
-  image: string;
-  href: string;
-}
-
-export const jobCategories: JobCategory[] = [
-  {
-    id: "housemaids-saudi",
-    title: "Housemaids",
-    country: "Saudi Arabia",
-    flag: "🇸🇦",
-    category: "Domestic Work",
-    image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
-    href: "/jobs?category=domestic-work&country=saudi-arabia",
-  },
-  {
-    id: "construction-qatar",
-    title: "Construction Workers",
-    country: "Qatar",
-    flag: "🇶🇦",
-    category: "Construction",
-    image:
-      "https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=800&q=80",
-    href: "/jobs?category=construction&country=qatar",
-  },
-  {
-    id: "hospitality-uae",
-    title: "Hospitality Staff",
-    country: "UAE",
-    flag: "🇦🇪",
-    category: "Hospitality",
-    image:
-      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=800&q=80",
-    href: "/jobs?category=hospitality&country=uae",
-  },
-  {
-    id: "drivers-kuwait",
-    title: "Drivers",
-    country: "Kuwait",
-    flag: "🇰🇼",
-    category: "Transport",
-    image:
-      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=800&q=80",
-    href: "/jobs?category=transport&country=kuwait",
-  },
-  {
-    id: "healthcare-oman",
-    title: "Healthcare Aides",
-    country: "Oman",
-    flag: "🇴🇲",
-    category: "Healthcare",
-    image:
-      "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80",
-    href: "/jobs?category=healthcare&country=oman",
-  },
-  {
-    id: "factory-jordan",
-    title: "Factory Workers",
-    country: "Jordan",
-    flag: "🇯🇴",
-    category: "Manufacturing",
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-    href: "/jobs?category=manufacturing&country=jordan",
-  },
-];
-
 export type JobGender = "Male" | "Female" | "Any";
 
 export interface Job {
@@ -507,6 +434,80 @@ export const jobs: Job[] = [
 
 export const jobCountries = Array.from(new Set(jobs.map((job) => job.country))).sort();
 export const jobCategoryOptions = Array.from(new Set(jobs.map((job) => job.category))).sort();
+export const countryFlags: Record<string, string> = Object.fromEntries(
+  jobs.map((job) => [job.country, job.flag]),
+);
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+export const faqItems: FaqItem[] = [
+  {
+    id: "how-to-apply",
+    question: "How do I apply?",
+    answer:
+      "Register through our online form or visit our office in person. Our team will review your details and match you with suitable openings.",
+  },
+  {
+    id: "documents-needed",
+    question: "What documents do I need?",
+    answer:
+      "Typically a valid passport, educational or professional certificates, and a medical clearance. Our team will confirm the exact list for your specific job and destination.",
+  },
+  {
+    id: "countries",
+    question: "What countries do you recruit for?",
+    answer:
+      "Currently Saudi Arabia, Qatar, UAE, Kuwait, Oman, and Jordan. Check our Jobs page for current openings by country.",
+  },
+  {
+    id: "cost",
+    question: "How much does the process cost?",
+    answer:
+      "Costs vary by role and destination, and we explain every fee in writing before you pay anything. We do not charge recruitment fees before a job offer and contract have been reviewed and accepted.",
+  },
+  {
+    id: "timeline",
+    question: "How long does recruitment take?",
+    answer:
+      "Timelines vary by country and role, largely depending on visa processing. Our team will give you a realistic estimate once your registration and documents are reviewed.",
+  },
+  {
+    id: "no-experience",
+    question: "Can I apply without experience?",
+    answer:
+      "Yes — some roles require no prior experience and include training, while others require specific experience or qualifications. Filter by experience level on our Jobs page to see what's currently open.",
+  },
+  {
+    id: "after-selection",
+    question: "What happens after selection?",
+    answer:
+      "We guide you through the remaining documentation, medical checks, visa processing, and travel arrangements, and stay in touch after you arrive.",
+  },
+  {
+    id: "verify-job",
+    question: "How do I verify a job?",
+    answer:
+      "Contact our office directly with the job details before accepting any offer or making any payment. Never rely solely on messages from unknown numbers or unofficial channels.",
+  },
+];
+
+export interface SafeMigrationTip {
+  id: string;
+  text: string;
+}
+
+export const safeMigrationTips: SafeMigrationTip[] = [
+  { id: "verify-agency", text: "Verify the agency" },
+  { id: "verify-employer", text: "Verify the employer" },
+  { id: "read-contract", text: "Read your employment contract" },
+  { id: "understand-fees", text: "Understand all fees" },
+  { id: "keep-copies", text: "Keep copies of your documents" },
+  { id: "proper-documentation", text: "Never travel without proper documentation" },
+];
 
 export interface Step {
   id: string;

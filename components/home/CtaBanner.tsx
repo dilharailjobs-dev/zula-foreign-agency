@@ -16,7 +16,7 @@ export default function CtaBanner() {
           href="/apply"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-8 py-3.5 text-sm font-semibold text-cream shadow-sm transition-colors hover:bg-primary-dark sm:text-base"
         >
-          Apply Now
+          Register With Zula
           <ArrowRight size={18} />
         </Link>
       </div>

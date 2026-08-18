@@ -23,7 +23,7 @@ export default function ForEmployers() {
               href="/employers"
               className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-accent-dark"
             >
-              Request Employees <ArrowRight size={16} />
+              Recruit With Zula <ArrowRight size={16} />
             </Link>
           </div>
 
