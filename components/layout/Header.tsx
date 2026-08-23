@@ -16,8 +16,8 @@ export default function Header() {
           <Image
             src="/images/brand/logo-icon.jpg"
             alt="Zula Foreign Agency"
-            width={40}
-            height={29}
+            width={36}
+            height={40}
             className="h-9 w-auto"
             priority
           />

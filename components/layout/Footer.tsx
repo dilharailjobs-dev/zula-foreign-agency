@@ -32,8 +32,8 @@ export default function Footer() {
                 <Image
                   src="/images/brand/logo-icon.jpg"
                   alt="Zula Foreign Agency"
-                  width={28}
-                  height={20}
+                  width={25}
+                  height={28}
                   className="h-full w-auto"
                 />
               </span>
