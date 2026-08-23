@@ -20,10 +20,26 @@ export default function ApplyForm() {
   const matchedJob = jobs.find((job) => job.slug === jobSlug);
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setError(false);
+
+    try {
+      const response = await fetch("/api/apply", {
+        method: "POST",
+        body: new FormData(event.currentTarget),
+      });
+      if (!response.ok) throw new Error("Request failed");
+      setSubmitted(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -35,9 +51,7 @@ export default function ApplyForm() {
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-ink-soft">
           A member of our recruitment team will review your registration and
-          get in touch. This is a demo form and hasn&apos;t sent your
-          information anywhere yet — for a real application, please also
-          contact our office directly.
+          get in touch.
         </p>
       </div>
     );
@@ -195,11 +209,18 @@ export default function ApplyForm() {
         </div>
       </fieldset>
 
+      {error && (
+        <p className="text-sm text-red-600">
+          Something went wrong submitting your registration. Please try again.
+        </p>
+      )}
+
       <button
         type="submit"
-        className="inline-flex w-full items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-accent-dark sm:w-auto"
+        disabled={submitting}
+        className="inline-flex w-full items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-accent-dark disabled:opacity-60 sm:w-auto"
       >
-        Submit Registration
+        {submitting ? "Submitting…" : "Submit Registration"}
       </button>
     </form>
   );
