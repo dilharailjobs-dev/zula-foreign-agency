@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const NOTIFICATION_EMAIL = "dilhara.iljobs@gmail.com";
+const NOTIFICATION_EMAIL = "admin@zula.lk";
 
 export async function sendNotificationEmail({
   subject,
