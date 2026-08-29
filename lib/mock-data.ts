@@ -41,10 +41,10 @@ export const groupSites: GroupSite[] = [
 export const navLinks: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Jobs", href: "/jobs" },
-  { label: "Destinations", href: "#destinations" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Destinations", href: "/#destinations" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const legalLinks: NavLink[] = [
