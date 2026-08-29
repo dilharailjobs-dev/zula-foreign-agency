@@ -95,7 +95,7 @@ export interface ContactInfo {
 export const contactInfo: ContactInfo = {
   address: "428/1, Hokandara North, Hokandara, Sri Lanka",
   phone: "+94 11 215 7810",
-  email: "info@zulaachzakot.com",
+  email: "info@zula.lk",
 };
 
 export interface CompanyValue {
