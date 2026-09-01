@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { contactInfo } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Zula Foreign Agency",
-  description: "Privacy Policy for Zula Foreign Agency.",
+  title: "Privacy Policy | Zula Foreign Employment Agency",
+  description: "Privacy Policy for Zula Foreign Employment Agency.",
 };
 
 const sections = [
@@ -31,7 +31,11 @@ const sections = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <main
+      dir="ltr"
+      lang="en"
+      className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
+    >
       <p className="text-xs font-semibold uppercase tracking-wide text-primary">
         Legal
       </p>

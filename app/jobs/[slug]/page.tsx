@@ -12,6 +12,8 @@ import {
   Wallet,
 } from "lucide-react";
 import { jobs } from "@/lib/mock-data";
+import { getLocale } from "@/lib/i18n/get-locale";
+import { getDictionary } from "@/lib/i18n/get-dictionary";
 
 export function generateStaticParams() {
   return jobs.map((job) => ({ slug: job.slug }));
@@ -24,10 +26,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const job = jobs.find((item) => item.slug === slug);
-  if (!job) return { title: "Job Not Found | Zula Foreign Agency" };
+  const locale = await getLocale();
+  const dict = await getDictionary(locale);
+  if (!job) return { title: `${dict.jobs.detail.notFoundTitle} | ${dict.common.siteName}` };
+  const content = dict.jobs.content[job.slug as keyof typeof dict.jobs.content];
   return {
-    title: `${job.title} — ${job.country} | Zula Foreign Agency`,
-    description: job.summary,
+    title: `${content.title} — ${dict.jobs.countries[job.countryCode]} | ${dict.common.siteName}`,
+    description: content.summary,
   };
 }
 
@@ -41,10 +46,15 @@ export default async function JobDetailPage({
 
   if (!job) notFound();
 
+  const locale = await getLocale();
+  const dict = await getDictionary(locale);
+  const content = dict.jobs.content[job.slug as keyof typeof dict.jobs.content];
+  const d = dict.jobs.detail;
+
   const facts = [
-    { icon: Wallet, label: "Salary", value: job.salary },
-    { icon: GraduationCap, label: "Education", value: job.education },
-    { icon: Calendar, label: "Experience", value: job.experience },
+    { icon: Wallet, label: d.salary, value: content.salary },
+    { icon: GraduationCap, label: d.education, value: content.education },
+    { icon: Calendar, label: d.experience, value: content.experience },
   ];
 
   return (
@@ -53,7 +63,7 @@ export default async function JobDetailPage({
         href="/jobs"
         className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary-dark"
       >
-        <ArrowLeft size={16} /> Back to all jobs
+        <ArrowLeft size={16} className="rtl:rotate-180" /> {d.backToAllJobs}
       </Link>
 
       <div className="mt-6 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
@@ -61,7 +71,7 @@ export default async function JobDetailPage({
           <div className="relative h-56 w-full overflow-hidden rounded-2xl sm:h-72">
             <Image
               src={job.image}
-              alt={`${job.title} in ${job.country}`}
+              alt={`${content.title} in ${dict.jobs.countries[job.countryCode]}`}
               fill
               sizes="(min-width: 1024px) 60vw, 100vw"
               className="object-cover"
@@ -70,26 +80,22 @@ export default async function JobDetailPage({
           </div>
 
           <span className="mt-6 inline-block rounded-full bg-primary-light px-3 py-1 text-xs font-semibold text-primary">
-            {job.category}
+            {dict.jobs.categories[job.categoryCode]}
           </span>
           <h1 className="mt-3 font-display text-3xl font-bold text-ink sm:text-4xl">
-            {job.title}
+            {content.title}
           </h1>
           <p className="mt-2 text-base text-ink-soft">
-            <span className="mr-1.5">{job.flag}</span>
-            {job.country} &middot; {job.gender === "Any" ? "Open to all genders" : job.gender}
+            <span className="me-1.5">{job.flag}</span>
+            {dict.jobs.countries[job.countryCode]} &middot; {dict.jobs.genderLabel[job.genderCode]}
           </p>
 
-          <p className="mt-6 text-base leading-relaxed text-ink-soft">
-            {job.description}
-          </p>
+          <p className="mt-6 text-base leading-relaxed text-ink-soft">{content.description}</p>
 
           <div className="mt-8">
-            <h2 className="font-display text-lg font-semibold text-ink">
-              Responsibilities
-            </h2>
+            <h2 className="font-display text-lg font-semibold text-ink">{d.responsibilities}</h2>
             <ul className="mt-3 space-y-2">
-              {job.responsibilities.map((item) => (
+              {content.responsibilities.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-ink-soft">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                   {item}
@@ -99,11 +105,9 @@ export default async function JobDetailPage({
           </div>
 
           <div className="mt-8">
-            <h2 className="font-display text-lg font-semibold text-ink">
-              Requirements
-            </h2>
+            <h2 className="font-display text-lg font-semibold text-ink">{d.requirements}</h2>
             <ul className="mt-3 space-y-2">
-              {job.requirements.map((item) => (
+              {content.requirements.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-ink-soft">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                   {item}
@@ -114,9 +118,7 @@ export default async function JobDetailPage({
         </div>
 
         <aside className="h-fit rounded-2xl border border-black/5 bg-white p-6 shadow-sm lg:sticky lg:top-24">
-          <p className="font-display text-lg font-semibold text-ink">
-            Job Overview
-          </p>
+          <p className="font-display text-lg font-semibold text-ink">{d.jobOverview}</p>
           <dl className="mt-5 space-y-4">
             {facts.map((fact) => {
               const Icon = fact.icon;
@@ -137,12 +139,12 @@ export default async function JobDetailPage({
             <div className="flex flex-wrap gap-3 pt-1 text-xs text-ink-soft">
               {job.accommodation && (
                 <span className="flex items-center gap-1">
-                  <BedDouble size={14} /> Accommodation provided
+                  <BedDouble size={14} /> {d.accommodationProvided}
                 </span>
               )}
               {job.food && (
                 <span className="flex items-center gap-1">
-                  <UtensilsCrossed size={14} /> Food provided
+                  <UtensilsCrossed size={14} /> {d.foodProvided}
                 </span>
               )}
             </div>
@@ -152,7 +154,7 @@ export default async function JobDetailPage({
             href={`/apply?job=${job.slug}`}
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-accent-dark"
           >
-            Apply Now <ArrowRight size={16} />
+            {d.applyNow} <ArrowRight size={16} className="rtl:rotate-180" />
           </Link>
         </aside>
       </div>

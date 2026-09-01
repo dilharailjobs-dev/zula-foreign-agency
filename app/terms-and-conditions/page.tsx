@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Zula Foreign Agency",
-  description: "Terms & Conditions for Zula Foreign Agency.",
+  title: "Terms & Conditions | Zula Foreign Employment Agency",
+  description: "Terms & Conditions for Zula Foreign Employment Agency.",
 };
 
 const sections = [
@@ -20,11 +20,11 @@ const sections = [
   },
   {
     title: "Intellectual Property",
-    body: "All content on this website, including text, graphics, and the Zula Foreign Agency name and logo, is the property of Zula Foreign Agency unless otherwise stated.",
+    body: "All content on this website, including text, graphics, and the Zula Foreign Employment Agency name and logo, is the property of Zula Foreign Employment Agency unless otherwise stated.",
   },
   {
     title: "Limitation of Liability",
-    body: "Zula Foreign Agency makes reasonable efforts to keep the information on this website accurate and up to date, but makes no warranties about its completeness or reliability.",
+    body: "Zula Foreign Employment Agency makes reasonable efforts to keep the information on this website accurate and up to date, but makes no warranties about its completeness or reliability.",
   },
   {
     title: "Governing Law",
@@ -34,7 +34,11 @@ const sections = [
 
 export default function TermsAndConditionsPage() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+    <main
+      dir="ltr"
+      lang="en"
+      className="mx-auto max-w-3xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8"
+    >
       <p className="text-xs font-semibold uppercase tracking-wide text-primary">
         Legal
       </p>

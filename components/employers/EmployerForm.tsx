@@ -2,9 +2,13 @@
 
 import { useState, type FormEvent, type ReactNode } from "react";
 import { CheckCircle2 } from "lucide-react";
-import { jobCategoryOptions } from "@/lib/mock-data";
+import { categoryCodes } from "@/lib/mock-data";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
 export default function EmployerForm() {
+  const { dict } = useI18n();
+  const t = dict.employers;
+
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
@@ -32,13 +36,8 @@ export default function EmployerForm() {
     return (
       <div className="rounded-2xl border border-black/5 bg-white p-10 text-center shadow-sm">
         <CheckCircle2 className="mx-auto text-primary" size={40} />
-        <h2 className="mt-4 font-display text-xl font-semibold text-ink">
-          Thanks — we&apos;ve received your request
-        </h2>
-        <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-          Our recruitment team will review your requirements and get in
-          touch.
-        </p>
+        <h2 className="mt-4 font-display text-xl font-semibold text-ink">{t.success.heading}</h2>
+        <p className="mt-2 text-sm leading-relaxed text-ink-soft">{t.success.body}</p>
       </div>
     );
   }
@@ -46,58 +45,54 @@ export default function EmployerForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <Field label="Company Name" htmlFor="companyName" required>
+        <Field label={t.fields.companyName} htmlFor="companyName" required>
           <input id="companyName" name="companyName" type="text" required className={inputClass} />
         </Field>
-        <Field label="Contact Person" htmlFor="contactPerson" required>
+        <Field label={t.fields.contactPerson} htmlFor="contactPerson" required>
           <input id="contactPerson" name="contactPerson" type="text" required className={inputClass} />
         </Field>
-        <Field label="Email" htmlFor="email" required>
+        <Field label={t.fields.email} htmlFor="email" required>
           <input id="email" name="email" type="email" required className={inputClass} />
         </Field>
-        <Field label="Phone" htmlFor="phone" required>
+        <Field label={t.fields.phone} htmlFor="phone" required>
           <input id="phone" name="phone" type="tel" required className={inputClass} />
         </Field>
-        <Field label="Country" htmlFor="country" required>
+        <Field label={t.fields.country} htmlFor="country" required>
           <input id="country" name="country" type="text" required className={inputClass} />
         </Field>
-        <Field label="Industry" htmlFor="industry">
+        <Field label={t.fields.industry} htmlFor="industry">
           <select id="industry" name="industry" className={inputClass} defaultValue="">
-            <option value="">Select industry</option>
-            {jobCategoryOptions.map((category) => (
-              <option key={category} value={category}>
-                {category}
+            <option value="">{t.fields.selectIndustry}</option>
+            {categoryCodes.map((code) => (
+              <option key={code} value={code}>
+                {dict.jobs.categories[code]}
               </option>
             ))}
           </select>
         </Field>
-        <Field label="Number of Workers Needed" htmlFor="workerCount">
+        <Field label={t.fields.workerCount} htmlFor="workerCount">
           <input id="workerCount" name="workerCount" type="number" min={1} className={inputClass} />
         </Field>
       </div>
 
-      <Field label="Job Specifications" htmlFor="message">
+      <Field label={t.fields.jobSpecifications} htmlFor="message">
         <textarea
           id="message"
           name="message"
           rows={4}
-          placeholder="Tell us about the roles, salary range, and any specific requirements"
+          placeholder={t.fields.jobSpecPlaceholder}
           className={inputClass}
         />
       </Field>
 
-      {error && (
-        <p className="text-sm text-red-600">
-          Something went wrong submitting your request. Please try again.
-        </p>
-      )}
+      {error && <p className="text-sm text-red-600">{t.error}</p>}
 
       <button
         type="submit"
         disabled={submitting}
         className="inline-flex w-full items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-accent-dark disabled:opacity-60 sm:w-auto"
       >
-        {submitting ? "Submitting…" : "Submit Request"}
+        {submitting ? t.submitting : t.submit}
       </button>
     </form>
   );

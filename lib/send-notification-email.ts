@@ -24,7 +24,7 @@ export async function sendNotificationEmail({
     .join("\n");
 
   const { error } = await resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL ?? "Zula Foreign Agency <onboarding@resend.dev>",
+    from: process.env.RESEND_FROM_EMAIL ?? "Zula Foreign Employment Agency <onboarding@resend.dev>",
     to: NOTIFICATION_EMAIL,
     replyTo: fields.email || undefined,
     subject,

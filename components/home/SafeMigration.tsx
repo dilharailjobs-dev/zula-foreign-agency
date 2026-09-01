@@ -1,7 +1,13 @@
 import { ShieldCheck } from "lucide-react";
 import { safeMigrationTips } from "@/lib/mock-data";
+import { getLocale } from "@/lib/i18n/get-locale";
+import { getDictionary } from "@/lib/i18n/get-dictionary";
 
-export default function SafeMigration() {
+export default async function SafeMigration() {
+  const locale = await getLocale();
+  const dict = await getDictionary(locale);
+  const t = dict.home.safeMigration;
+
   return (
     <section className="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="rounded-3xl border border-black/5 bg-white p-8 shadow-sm sm:p-12">
@@ -10,13 +16,8 @@ export default function SafeMigration() {
             <ShieldCheck size={24} />
           </span>
           <div>
-            <h2 className="font-display text-2xl font-bold text-ink sm:text-3xl">
-              Protect Yourself From Recruitment Scams
-            </h2>
-            <p className="mt-2 text-sm text-ink-soft">
-              Before you accept any job offer or make any payment, take these
-              steps.
-            </p>
+            <h2 className="font-display text-2xl font-bold text-ink sm:text-3xl">{t.heading}</h2>
+            <p className="mt-2 text-sm text-ink-soft">{t.description}</p>
           </div>
         </div>
 
@@ -24,7 +25,7 @@ export default function SafeMigration() {
           {safeMigrationTips.map((tip) => (
             <li key={tip.id} className="flex items-start gap-3 text-sm text-ink-soft">
               <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-              {tip.text}
+              {t.tips[tip.id as keyof typeof t.tips]}
             </li>
           ))}
         </ul>

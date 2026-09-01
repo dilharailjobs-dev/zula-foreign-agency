@@ -3,21 +3,21 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle2 } from "lucide-react";
-import { jobCategoryOptions, jobCountries, jobs } from "@/lib/mock-data";
+import { categoryCodes, countryCodes, jobs } from "@/lib/mock-data";
 import { sriLankaDistricts } from "@/lib/sri-lanka-districts";
+import { useI18n } from "@/components/i18n/I18nProvider";
 
-const experienceOptions = [
-  "No experience",
-  "Less than 1 year",
-  "1–2 years",
-  "3–5 years",
-  "5+ years",
-];
+const experienceOptionIds = ["none", "under-1", "1-2", "3-5", "5-plus"] as const;
 
 export default function ApplyForm() {
   const searchParams = useSearchParams();
   const jobSlug = searchParams.get("job");
   const matchedJob = jobs.find((job) => job.slug === jobSlug);
+  const { dict } = useI18n();
+  const t = dict.apply;
+  const matchedContent = matchedJob
+    ? dict.jobs.content[matchedJob.slug as keyof typeof dict.jobs.content]
+    : null;
 
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -46,32 +46,28 @@ export default function ApplyForm() {
     return (
       <div className="rounded-2xl border border-black/5 bg-white p-10 text-center shadow-sm">
         <CheckCircle2 className="mx-auto text-primary" size={40} />
-        <h2 className="mt-4 font-display text-xl font-semibold text-ink">
-          Thanks — we&apos;ve received your details
-        </h2>
-        <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-          A member of our recruitment team will review your registration and
-          get in touch.
-        </p>
+        <h2 className="mt-4 font-display text-xl font-semibold text-ink">{t.success.heading}</h2>
+        <p className="mt-2 text-sm leading-relaxed text-ink-soft">{t.success.body}</p>
       </div>
     );
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-10">
-      {matchedJob && (
+      {matchedJob && matchedContent && (
         <div className="rounded-xl bg-primary-light px-4 py-3 text-sm text-primary">
-          Applying for <span className="font-semibold">{matchedJob.title}</span> —{" "}
-          {matchedJob.country}
+          {t.applyingFor}{" "}
+          <span className="font-semibold">{matchedContent.title}</span> —{" "}
+          {dict.jobs.countries[matchedJob.countryCode]}
         </div>
       )}
 
       <fieldset>
         <legend className="font-display text-lg font-semibold text-ink">
-          Personal Information
+          {t.personalInformation}
         </legend>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field label="Full Name" htmlFor="fullName" required>
+          <Field label={t.fields.fullName} htmlFor="fullName" required>
             <input
               id="fullName"
               name="fullName"
@@ -80,19 +76,19 @@ export default function ApplyForm() {
               className={inputClass}
             />
           </Field>
-          <Field label="Phone Number" htmlFor="phone" required>
+          <Field label={t.fields.phoneNumber} htmlFor="phone" required>
             <input id="phone" name="phone" type="tel" required className={inputClass} />
           </Field>
-          <Field label="Email" htmlFor="email" required>
+          <Field label={t.fields.email} htmlFor="email" required>
             <input id="email" name="email" type="email" required className={inputClass} />
           </Field>
-          <Field label="Date of Birth" htmlFor="dob" required>
+          <Field label={t.fields.dateOfBirth} htmlFor="dob" required>
             <input id="dob" name="dob" type="date" required className={inputClass} />
           </Field>
-          <Field label="District" htmlFor="district" required>
+          <Field label={t.fields.district} htmlFor="district" required>
             <select id="district" name="district" required className={inputClass} defaultValue="">
               <option value="" disabled>
-                Select district
+                {t.fields.selectDistrict}
               </option>
               {sriLankaDistricts.map((district) => (
                 <option key={district} value={district}>
@@ -105,77 +101,75 @@ export default function ApplyForm() {
       </fieldset>
 
       <fieldset>
-        <legend className="font-display text-lg font-semibold text-ink">
-          Employment
-        </legend>
+        <legend className="font-display text-lg font-semibold text-ink">{t.employment}</legend>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field label="Preferred Country" htmlFor="preferredCountry">
+          <Field label={t.fields.preferredCountry} htmlFor="preferredCountry">
             <select
               id="preferredCountry"
               name="preferredCountry"
               className={inputClass}
-              defaultValue={matchedJob?.country ?? ""}
+              defaultValue={matchedJob?.countryCode ?? ""}
             >
-              <option value="">No preference</option>
-              {jobCountries.map((country) => (
-                <option key={country} value={country}>
-                  {country}
+              <option value="">{t.fields.noPreference}</option>
+              {countryCodes.map((code) => (
+                <option key={code} value={code}>
+                  {dict.jobs.countries[code]}
                 </option>
               ))}
             </select>
           </Field>
-          <Field label="Job Category" htmlFor="jobCategory">
+          <Field label={t.fields.jobCategory} htmlFor="jobCategory">
             <select
               id="jobCategory"
               name="jobCategory"
               className={inputClass}
-              defaultValue={matchedJob?.category ?? ""}
+              defaultValue={matchedJob?.categoryCode ?? ""}
             >
-              <option value="">No preference</option>
-              {jobCategoryOptions.map((category) => (
-                <option key={category} value={category}>
-                  {category}
+              <option value="">{t.fields.noPreference}</option>
+              {categoryCodes.map((code) => (
+                <option key={code} value={code}>
+                  {dict.jobs.categories[code]}
                 </option>
               ))}
             </select>
           </Field>
-          <Field label="Position" htmlFor="position">
+          <Field label={t.fields.position} htmlFor="position">
             <input
               id="position"
               name="position"
               type="text"
-              defaultValue={matchedJob?.title ?? ""}
-              placeholder="e.g. Housemaid, Electrician"
+              defaultValue={matchedContent?.title ?? ""}
+              placeholder={t.fields.positionPlaceholder}
               className={inputClass}
             />
           </Field>
-          <Field label="Experience" htmlFor="experience">
+          <Field label={t.fields.experience} htmlFor="experience">
             <select id="experience" name="experience" className={inputClass} defaultValue="">
               <option value="" disabled>
-                Select experience level
+                {t.fields.selectExperienceLevel}
               </option>
-              {experienceOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
+              {experienceOptionIds.map((id) => (
+                <option key={id} value={id}>
+                  {t.experienceOptions[id]}
                 </option>
               ))}
             </select>
           </Field>
-          <Field label="Languages Spoken" htmlFor="languages">
+          <Field label={t.fields.languagesSpoken} htmlFor="languages">
             <input
               id="languages"
               name="languages"
               type="text"
-              placeholder="e.g. Sinhala, English"
+              placeholder={t.fields.languagesPlaceholder}
               className={inputClass}
             />
           </Field>
-          <Field label="Qualifications" htmlFor="qualifications">
+          <Field label={t.fields.qualifications} htmlFor="qualifications">
             <input
               id="qualifications"
               name="qualifications"
               type="text"
-              placeholder="e.g. O/L, NVQ Level 3"
+              placeholder={t.fields.qualificationsPlaceholder}
               className={inputClass}
             />
           </Field>
@@ -183,44 +177,38 @@ export default function ApplyForm() {
       </fieldset>
 
       <fieldset>
-        <legend className="font-display text-lg font-semibold text-ink">
-          Documents
-        </legend>
+        <legend className="font-display text-lg font-semibold text-ink">{t.documents}</legend>
         <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <Field label="CV Upload" htmlFor="cv">
+          <Field label={t.fields.cvUpload} htmlFor="cv">
             <input
               id="cv"
               name="cv"
               type="file"
               accept=".pdf,.doc,.docx"
-              className={`${inputClass} file:mr-4 file:rounded-full file:border-0 file:bg-primary-light file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-primary`}
+              className={`${inputClass} file:me-4 file:rounded-full file:border-0 file:bg-primary-light file:px-4 file:py-1.5 file:text-sm file:font-medium file:text-primary`}
             />
           </Field>
-          <Field label="Passport Status" htmlFor="passportStatus">
+          <Field label={t.fields.passportStatus} htmlFor="passportStatus">
             <select id="passportStatus" name="passportStatus" className={inputClass} defaultValue="">
               <option value="" disabled>
-                Select status
+                {t.fields.selectStatus}
               </option>
-              <option value="valid">I have a valid passport</option>
-              <option value="expired">My passport has expired</option>
-              <option value="none">I don&apos;t have a passport yet</option>
+              <option value="valid">{t.fields.passportValid}</option>
+              <option value="expired">{t.fields.passportExpired}</option>
+              <option value="none">{t.fields.passportNone}</option>
             </select>
           </Field>
         </div>
       </fieldset>
 
-      {error && (
-        <p className="text-sm text-red-600">
-          Something went wrong submitting your registration. Please try again.
-        </p>
-      )}
+      {error && <p className="text-sm text-red-600">{t.error}</p>}
 
       <button
         type="submit"
         disabled={submitting}
         className="inline-flex w-full items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-accent-dark disabled:opacity-60 sm:w-auto"
       >
-        {submitting ? "Submitting…" : "Submit Registration"}
+        {submitting ? t.submitting : t.submit}
       </button>
     </form>
   );
