@@ -49,7 +49,7 @@ const en = {
     },
     copyright: "Zula Foreign Employment Agency. All rights reserved.",
     slbfeDisclaimer:
-      "Foreign Employment Agency, Sri Lanka — SLBFE registration details to be published here",
+      "Foreign Employment Agency, Sri Lanka — SLBFE Registration No. 3818",
   },
 
   home: {
@@ -64,9 +64,9 @@ const en = {
 
     trustStrip: {
       license: {
-        value: "SLBFE Registration",
+        value: "SLBFE Reg. No. 3818",
         label:
-          "License details will be published here once finalized with the Sri Lanka Bureau of Foreign Employment",
+          "Licensed foreign employment agency registered with the Sri Lanka Bureau of Foreign Employment",
       },
       experience: {
         value: "Experienced Team",

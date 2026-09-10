@@ -51,7 +51,7 @@ const he: Dictionary = {
     },
     copyright: "Zula Foreign Employment Agency. כל הזכויות שמורות.",
     slbfeDisclaimer:
-      "סוכנות תעסוקה בחו״ל, סרי לנקה — פרטי הרישום ב-SLBFE יפורסמו כאן בקרוב",
+      "סוכנות תעסוקה בחו״ל, סרי לנקה — מספר רישום SLBFE 3818",
   },
 
   home: {
@@ -66,9 +66,9 @@ const he: Dictionary = {
 
     trustStrip: {
       license: {
-        value: "רישום SLBFE",
+        value: "מספר רישום SLBFE 3818",
         label:
-          "פרטי הרישיון יפורסמו כאן לאחר סיום התהליך מול הרשות הסרי-לנקנית לתעסוקה בחו״ל",
+          "סוכנות תעסוקה מורשית בחו״ל, רשומה ברשות הסרי-לנקנית לתעסוקה בחו״ל (SLBFE)",
       },
       experience: {
         value: "צוות מנוסה",
