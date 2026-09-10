@@ -47,7 +47,6 @@ const si: Dictionary = {
     socialLabels: {
       facebook: "Facebook",
       instagram: "Instagram",
-      youtube: "YouTube",
       tiktok: "TikTok",
     },
     copyright: "Zula Foreign Employment Agency. සියලුම හිමිකම් ඇවිරිණි.",

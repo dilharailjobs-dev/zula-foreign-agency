@@ -45,7 +45,6 @@ const en = {
     socialLabels: {
       facebook: "Facebook",
       instagram: "Instagram",
-      youtube: "YouTube",
       tiktok: "TikTok",
     },
     copyright: "Zula Foreign Employment Agency. All rights reserved.",

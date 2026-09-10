@@ -47,7 +47,6 @@ const ta: Dictionary = {
     socialLabels: {
       facebook: "Facebook",
       instagram: "Instagram",
-      youtube: "YouTube",
       tiktok: "TikTok",
     },
     copyright: "Zula Foreign Employment Agency. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
