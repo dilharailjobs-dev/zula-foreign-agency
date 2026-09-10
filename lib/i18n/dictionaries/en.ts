@@ -13,6 +13,7 @@ const en = {
     navLinks: {
       home: "Home",
       jobs: "Jobs",
+      news: "News",
       destinations: "Destinations",
       "how-it-works": "How It Works",
       about: "About",

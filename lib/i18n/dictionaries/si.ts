@@ -15,6 +15,7 @@ const si: Dictionary = {
     navLinks: {
       home: "මුල් පිටුව",
       jobs: "රැකියා",
+      news: "පුවත්",
       destinations: "ගමනාන්ත",
       "how-it-works": "ක්‍රියා කරන ආකාරය",
       about: "අප ගැන",

@@ -15,6 +15,7 @@ const ta: Dictionary = {
     navLinks: {
       home: "முகப்பு",
       jobs: "வேலைகள்",
+      news: "செய்திகள்",
       destinations: "இலக்கு நாடுகள்",
       "how-it-works": "இது எப்படி செயல்படுகிறது",
       about: "எங்களைப் பற்றி",

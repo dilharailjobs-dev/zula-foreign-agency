@@ -15,6 +15,7 @@ const he: Dictionary = {
     navLinks: {
       home: "בית",
       jobs: "משרות",
+      news: "חדשות",
       destinations: "יעדים",
       "how-it-works": "איך זה עובד",
       about: "אודות",
