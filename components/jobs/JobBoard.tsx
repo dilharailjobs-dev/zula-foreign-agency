@@ -135,7 +135,7 @@ export default function JobBoard() {
 
       <div className="mt-4 flex items-start gap-2.5 rounded-xl bg-primary-light px-4 py-3">
         <Info size={16} className="mt-0.5 shrink-0 text-primary" />
-        <p className="text-sm leading-relaxed text-primary">{dict.jobs.detail.trainingNote}</p>
+        <p className="min-w-0 text-sm leading-relaxed text-primary">{dict.jobs.detail.trainingNote}</p>
       </div>
 
       <p className="mt-6 text-sm text-ink-soft">{jobsFoundText}</p>

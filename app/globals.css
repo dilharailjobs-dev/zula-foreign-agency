@@ -38,4 +38,21 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  /* Sinhala/Tamil compound words have no internal spaces, so a single long
+     word can exceed a narrow mobile viewport's width. English text still
+     wraps at spaces as normal; this only kicks in when a word has nowhere
+     else to break. `anywhere` (not `break-word`) is required here: unlike
+     break-word, it also counts toward min-content/intrinsic sizing, so
+     flex/grid tracks actually shrink instead of forcing extra width. */
+  overflow-wrap: anywhere;
+}
+
+/* `body` is a column flexbox (see app/layout.tsx) so its direct children
+   (header, each page's <main>, footer) are flex items — by default a flex
+   item's automatic minimum width is its content's min-content size, which
+   can exceed the viewport when translated text is long, forcing the whole
+   page wider than the screen. Resetting it lets them shrink to fit and
+   wrap normally instead. */
+body > * {
+  min-width: 0;
 }

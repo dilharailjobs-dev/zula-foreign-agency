@@ -13,7 +13,7 @@ export default async function ForEmployers() {
     <section className="bg-ink py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
+          <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-wide text-accent">
               {t.eyebrow}
             </p>
@@ -29,13 +29,13 @@ export default async function ForEmployers() {
             </Link>
           </div>
 
-          <ol className="space-y-4">
+          <ol className="min-w-0 space-y-4">
             {employerProcessSteps.map((stepId, index) => (
               <li key={stepId} className="flex items-start gap-4">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cream/10 text-sm font-semibold text-cream">
                   {index + 1}
                 </span>
-                <span className="pt-1 text-sm text-cream/80">
+                <span className="min-w-0 pt-1 text-sm text-cream/80">
                   {dict.employerProcess[stepId as keyof typeof dict.employerProcess]}
                 </span>
               </li>

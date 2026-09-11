@@ -25,7 +25,7 @@ export default async function EmployersPage() {
       <p className="mt-4 max-w-2xl text-base text-ink-soft">{t.intro}</p>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1.3fr]">
-        <div>
+        <div className="min-w-0">
           <p className="font-display text-lg font-semibold text-ink">{t.howItWorksTitle}</p>
           <ol className="mt-4 space-y-4">
             {employerProcessSteps.map((stepId, index) => (
@@ -33,7 +33,7 @@ export default async function EmployersPage() {
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary-light text-sm font-semibold text-primary">
                   {index + 1}
                 </span>
-                <span className="pt-1 text-sm text-ink-soft">
+                <span className="min-w-0 pt-1 text-sm text-ink-soft">
                   {dict.employerProcess[stepId as keyof typeof dict.employerProcess]}
                 </span>
               </li>

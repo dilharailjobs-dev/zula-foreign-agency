@@ -17,7 +17,7 @@ export default async function TrustStrip() {
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary">
                 <Icon size={22} />
               </span>
-              <div>
+              <div className="min-w-0">
                 <p className="font-display text-lg font-bold text-ink">{t.value}</p>
                 <p className="mt-0.5 text-sm text-ink-soft">{t.label}</p>
               </div>

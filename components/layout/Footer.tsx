@@ -97,7 +97,7 @@ export default async function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-cream/70">
               <li className="flex items-start gap-2.5">
                 <MapPin size={18} className="mt-0.5 shrink-0 text-accent" />
-                <span>{contactInfo.address}</span>
+                <span className="min-w-0">{contactInfo.address}</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone size={18} className="shrink-0 text-accent" />

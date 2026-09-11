@@ -121,7 +121,7 @@ export default async function JobDetailPage({
 
           <div className="mt-8 flex items-start gap-3 rounded-xl bg-primary-light p-4">
             <Info size={18} className="mt-0.5 shrink-0 text-primary" />
-            <p className="text-sm leading-relaxed text-primary">{d.trainingNote}</p>
+            <p className="min-w-0 text-sm leading-relaxed text-primary">{d.trainingNote}</p>
           </div>
         </div>
 
@@ -135,7 +135,7 @@ export default async function JobDetailPage({
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary">
                     <Icon size={16} />
                   </span>
-                  <div>
+                  <div className="min-w-0">
                     <dt className="text-xs font-medium uppercase tracking-wide text-ink-soft">
                       {fact.label}
                     </dt>

@@ -43,7 +43,7 @@ export default function EmployerForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="min-w-0 space-y-5">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Field label={t.fields.companyName} htmlFor="companyName" required>
           <input id="companyName" name="companyName" type="text" required className={inputClass} />
@@ -113,7 +113,7 @@ function Field({
   children: ReactNode;
 }) {
   return (
-    <div>
+    <div className="min-w-0">
       <label htmlFor={htmlFor} className="text-sm font-medium text-ink">
         {label} {required && <span className="text-accent-dark">*</span>}
       </label>

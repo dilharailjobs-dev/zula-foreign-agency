@@ -15,7 +15,7 @@ export default async function SafeMigration() {
           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-primary-light text-primary">
             <ShieldCheck size={24} />
           </span>
-          <div>
+          <div className="min-w-0">
             <h2 className="font-display text-2xl font-bold text-ink sm:text-3xl">{t.heading}</h2>
             <p className="mt-2 text-sm text-ink-soft">{t.description}</p>
           </div>

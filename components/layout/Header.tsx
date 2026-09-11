@@ -44,25 +44,27 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 xl:flex">
+        <div className="flex items-center gap-2 xl:gap-3">
+          {/* Kept out of the mobile menu panel: a visitor who doesn't read
+              English shouldn't have to open a menu to find their language. */}
           <LanguageSwitcher />
           <Link
             href="/apply"
-            className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-accent-dark"
+            className="hidden items-center justify-center whitespace-nowrap rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-accent-dark xl:inline-flex"
           >
             {dict.header.registerCta}
           </Link>
-        </div>
 
-        <button
-          type="button"
-          onClick={() => setIsOpen((prev) => !prev)}
-          className="inline-flex items-center justify-center rounded-md p-2 text-ink xl:hidden"
-          aria-label={isOpen ? dict.header.closeMenu : dict.header.openMenu}
-          aria-expanded={isOpen}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <button
+            type="button"
+            onClick={() => setIsOpen((prev) => !prev)}
+            className="inline-flex items-center justify-center rounded-md p-2 text-ink xl:hidden"
+            aria-label={isOpen ? dict.header.closeMenu : dict.header.openMenu}
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {isOpen && (
@@ -78,9 +80,6 @@ export default function Header() {
                 {dict.header.navLinks[link.id as keyof typeof dict.header.navLinks]}
               </Link>
             ))}
-            <div className="mt-2 px-3">
-              <LanguageSwitcher className="w-full" />
-            </div>
             <Link
               href="/apply"
               onClick={() => setIsOpen(false)}

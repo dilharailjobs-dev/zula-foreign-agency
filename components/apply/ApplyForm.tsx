@@ -229,7 +229,7 @@ function Field({
   children: ReactNode;
 }) {
   return (
-    <div>
+    <div className="min-w-0">
       <label htmlFor={htmlFor} className="text-sm font-medium text-ink">
         {label} {required && <span className="text-accent-dark">*</span>}
       </label>
