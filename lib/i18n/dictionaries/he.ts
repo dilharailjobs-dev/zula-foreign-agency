@@ -9,6 +9,8 @@ const he: Dictionary = {
       he: "עברית",
     },
     siteName: "Zula Foreign Employment Agency",
+    siteNameShort: "Zula",
+    siteNameDescriptor: "Foreign Employment Agency",
   },
 
   header: {

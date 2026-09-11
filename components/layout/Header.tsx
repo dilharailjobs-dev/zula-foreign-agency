@@ -13,7 +13,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-cream/90 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5">
           <img
             src="/images/brand/logo-icon.svg"
@@ -22,28 +22,33 @@ export default function Header() {
             height={40}
             className="h-9 w-auto"
           />
-          <span className="font-display text-lg font-bold text-primary sm:text-xl">
-            {dict.common.siteName}
+          <span className="flex flex-col justify-center">
+            <span className="font-display text-lg font-bold leading-tight text-primary sm:text-xl">
+              {dict.common.siteNameShort}
+            </span>
+            <span className="whitespace-nowrap text-[10px] font-semibold uppercase leading-tight tracking-wide text-ink-soft">
+              {dict.common.siteNameDescriptor}
+            </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-5 xl:flex 2xl:gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.id}
               href={link.href}
-              className="text-sm font-medium text-ink-soft transition-colors hover:text-primary"
+              className="whitespace-nowrap text-sm font-medium text-ink-soft transition-colors hover:text-primary"
             >
               {dict.header.navLinks[link.id as keyof typeof dict.header.navLinks]}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <LanguageSwitcher />
           <Link
             href="/apply"
-            className="inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-accent-dark"
+            className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-accent-dark"
           >
             {dict.header.registerCta}
           </Link>
@@ -52,7 +57,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="inline-flex items-center justify-center rounded-md p-2 text-ink lg:hidden"
+          className="inline-flex items-center justify-center rounded-md p-2 text-ink xl:hidden"
           aria-label={isOpen ? dict.header.closeMenu : dict.header.openMenu}
           aria-expanded={isOpen}
         >
@@ -61,7 +66,7 @@ export default function Header() {
       </div>
 
       {isOpen && (
-        <div className="border-t border-black/5 bg-cream lg:hidden">
+        <div className="border-t border-black/5 bg-cream xl:hidden">
           <nav className="flex flex-col gap-1 px-4 py-4">
             {navLinks.map((link) => (
               <Link

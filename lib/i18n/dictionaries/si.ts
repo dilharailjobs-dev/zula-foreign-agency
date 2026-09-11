@@ -9,6 +9,8 @@ const si: Dictionary = {
       he: "עברית",
     },
     siteName: "Zula Foreign Employment Agency",
+    siteNameShort: "Zula",
+    siteNameDescriptor: "Foreign Employment Agency",
   },
 
   header: {
@@ -17,11 +19,11 @@ const si: Dictionary = {
       jobs: "රැකියා",
       news: "පුවත්",
       destinations: "ගමනාන්ත",
-      "how-it-works": "ක්‍රියා කරන ආකාරය",
+      "how-it-works": "ක්‍රියාවලිය",
       about: "අප ගැන",
-      contact: "සම්බන්ධ වන්න",
+      contact: "සම්බන්ධතා",
     },
-    registerCta: "Zula සමඟ ලියාපදිංචි වන්න",
+    registerCta: "ලියාපදිංචි වන්න",
     applyNow: "දැන් අයදුම් කරන්න",
     openMenu: "මෙනුව විවෘත කරන්න",
     closeMenu: "මෙනුව වසන්න",

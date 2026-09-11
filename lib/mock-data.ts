@@ -38,10 +38,10 @@ export const groupSites: GroupSite[] = [
 export const navLinks: NavLink[] = [
   { id: "home", href: "/" },
   { id: "jobs", href: "/jobs" },
-  { id: "news", href: "/news" },
   { id: "destinations", href: "/#destinations" },
   { id: "how-it-works", href: "/#how-it-works" },
   { id: "about", href: "/#about" },
+  { id: "news", href: "/news" },
   { id: "contact", href: "/#contact" },
 ];
 
