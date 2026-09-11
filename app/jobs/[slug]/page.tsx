@@ -8,6 +8,8 @@ import {
   BedDouble,
   Calendar,
   GraduationCap,
+  Info,
+  UserRound,
   UtensilsCrossed,
   Wallet,
 } from "lucide-react";
@@ -55,6 +57,7 @@ export default async function JobDetailPage({
     { icon: Wallet, label: d.salary, value: content.salary },
     { icon: GraduationCap, label: d.education, value: content.education },
     { icon: Calendar, label: d.experience, value: content.experience },
+    { icon: UserRound, label: d.age, value: `${job.ageMin}–${job.ageMax}` },
   ];
 
   return (
@@ -114,6 +117,11 @@ export default async function JobDetailPage({
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div className="mt-8 flex items-start gap-3 rounded-xl bg-primary-light p-4">
+            <Info size={18} className="mt-0.5 shrink-0 text-primary" />
+            <p className="text-sm leading-relaxed text-primary">{d.trainingNote}</p>
           </div>
         </div>
 

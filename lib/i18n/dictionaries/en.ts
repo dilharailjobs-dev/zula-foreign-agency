@@ -188,7 +188,7 @@ const en = {
       eyebrow: "For Employers",
       heading: "Looking for Reliable Sri Lankan Talent?",
       description:
-        "Zula helps international employers connect with qualified Sri Lankan workers across construction, trade, and services roles.",
+        "Zula helps international employers connect with qualified Sri Lankan workers across construction, trade and services, and industrial roles.",
       cta: "Recruit With Zula",
     },
 
@@ -237,7 +237,7 @@ const en = {
         "no-experience": {
           question: "Can I apply without experience?",
           answer:
-            "Yes — some roles require no prior experience and include training, while others require specific experience or qualifications. Filter by experience level on our Jobs page to see what's currently open.",
+            "Yes. Our current Israel roles ask for prior trade experience, but if you don't have it yet, we help candidates get the training and experience needed to qualify. Contact our office and we'll talk through your options.",
         },
         "after-selection": {
           question: "What happens after selection?",
@@ -302,8 +302,8 @@ const en = {
     },
     categories: {
       construction: "Construction",
-      trade: "Trade",
-      services: "Services",
+      "trade-services": "Trade and Services",
+      industrial: "Industrial",
     },
     genderLabel: {
       male: "Male",
@@ -321,6 +321,7 @@ const en = {
       allCountries: "All Countries",
       allCategories: "All Categories",
       allGenders: "Any Gender",
+      agePlaceholder: "Your age",
       jobsFoundOne: "{count} job found",
       jobsFoundOther: "{count} jobs found",
       viewJob: "View Job",
@@ -336,6 +337,9 @@ const en = {
       salary: "Salary",
       education: "Education",
       experience: "Experience",
+      age: "Age",
+      trainingNote:
+        "No experience yet? We help candidates get the training and experience needed for this role — contact our office to find out how.",
       accommodationProvided: "Accommodation provided",
       foodProvided: "Food provided",
       applyNow: "Apply Now",
@@ -347,7 +351,7 @@ const en = {
         title: "Bar Bender",
         salary: "ILS 6,000 – 7,000 / month",
         experience: "Experience required",
-        education: "Not specified",
+        education: "Basic English knowledge required",
         summary: "Reinforcement steel role on construction sites in Israel.",
         description:
           "Israeli construction contractors are hiring bar benders to cut, bend, and tie reinforcement steel for concrete works. Candidates should have hands-on experience and be comfortable working alongside a site crew.",
@@ -366,7 +370,7 @@ const en = {
         title: "Block Mason",
         salary: "ILS 6,000 – 7,000 / month",
         experience: "Experience required",
-        education: "Not specified",
+        education: "Basic English knowledge required",
         summary: "Block masonry role on construction sites in Israel.",
         description:
           "Israeli construction contractors are hiring block masons for ongoing building projects. Candidates should have prior masonry experience and basic spoken English to work safely alongside the site crew.",
@@ -385,7 +389,7 @@ const en = {
         title: "Plaster Mason",
         salary: "ILS 6,000 – 7,000 / month",
         experience: "Experience required",
-        education: "Not specified",
+        education: "Basic English knowledge required",
         summary: "Plastering role on construction sites in Israel.",
         description:
           "Israeli construction contractors are hiring plaster masons to apply and finish plaster on interior and exterior walls. Candidates should have prior plastering experience and basic spoken English.",
@@ -404,7 +408,7 @@ const en = {
         title: "Putty Worker",
         salary: "ILS 6,000 – 7,000 / month",
         experience: "Experience required",
-        education: "Not specified",
+        education: "Basic English knowledge required",
         summary: "Wall finishing role on construction sites in Israel.",
         description:
           "Israeli construction contractors are hiring putty workers to prepare walls and ceilings for painting. Candidates should have prior finishing experience and basic spoken English.",
@@ -423,7 +427,7 @@ const en = {
         title: "Shuttering Carpenter",
         salary: "ILS 6,000 – 7,000 / month",
         experience: "Experience required",
-        education: "Not specified",
+        education: "Basic English knowledge required",
         summary: "Formwork carpentry role on construction sites in Israel.",
         description:
           "Israeli construction contractors are hiring shuttering carpenters to build and fix formwork for concrete pours. Candidates should have prior shuttering experience and basic spoken English.",
@@ -442,7 +446,7 @@ const en = {
         title: "Tile Mason",
         salary: "ILS 6,000 – 7,000 / month",
         experience: "Experience required",
-        education: "Not specified",
+        education: "Basic English knowledge required",
         summary: "Tiling role on construction sites in Israel.",
         description:
           "Israeli construction contractors are hiring tile masons to lay floor and wall tiles on ongoing building projects. Candidates should have prior tiling experience and basic spoken English.",

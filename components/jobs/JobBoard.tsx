@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Search } from "lucide-react";
+import { Info, Search } from "lucide-react";
 import {
   jobs,
   countryCodes,
@@ -33,9 +33,12 @@ export default function JobBoard() {
     parseParam(categoryCodes, searchParams.get("category")),
   );
   const [gender, setGender] = useState<JobGenderCode | "all">("all");
+  const [age, setAge] = useState("");
 
   const filteredJobs = useMemo(() => {
     const q = query.trim().toLowerCase();
+    const parsedAge = Number(age);
+    const hasAge = age.trim() !== "" && Number.isFinite(parsedAge);
     return jobs.filter((job) => {
       const content = dict.jobs.content[job.slug as keyof typeof dict.jobs.content];
       const countryLabel = dict.jobs.countries[job.countryCode];
@@ -49,9 +52,11 @@ export default function JobBoard() {
       const matchesCategory = category === "all" || job.categoryCode === category;
       const matchesGender =
         gender === "all" || job.genderCode === gender || job.genderCode === "any";
-      return matchesQuery && matchesCountry && matchesCategory && matchesGender;
+      const matchesAge =
+        !hasAge || (parsedAge >= job.ageMin && parsedAge <= job.ageMax);
+      return matchesQuery && matchesCountry && matchesCategory && matchesGender && matchesAge;
     });
-  }, [query, country, category, gender, dict]);
+  }, [query, country, category, gender, age, dict]);
 
   const jobsFoundText =
     filteredJobs.length === 1
@@ -75,7 +80,7 @@ export default function JobBoard() {
           />
         </div>
 
-        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           <select
             value={country}
             onChange={(event) => setCountry(event.target.value as CountryCode | "all")}
@@ -113,7 +118,24 @@ export default function JobBoard() {
               </option>
             ))}
           </select>
+
+          <input
+            type="number"
+            inputMode="numeric"
+            min={16}
+            max={70}
+            value={age}
+            onChange={(event) => setAge(event.target.value)}
+            placeholder={t.agePlaceholder}
+            aria-label={t.agePlaceholder}
+            className="rounded-full border border-black/10 bg-cream px-4 py-2.5 text-sm text-ink placeholder:text-ink-soft/70 focus:border-primary focus:outline-none"
+          />
         </div>
+      </div>
+
+      <div className="mt-4 flex items-start gap-2.5 rounded-xl bg-primary-light px-4 py-3">
+        <Info size={16} className="mt-0.5 shrink-0 text-primary" />
+        <p className="text-sm leading-relaxed text-primary">{dict.jobs.detail.trainingNote}</p>
       </div>
 
       <p className="mt-6 text-sm text-ink-soft">{jobsFoundText}</p>

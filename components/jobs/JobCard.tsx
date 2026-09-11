@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BedDouble, UtensilsCrossed } from "lucide-react";
+import { ArrowRight, BedDouble, UserRound, UtensilsCrossed } from "lucide-react";
 import type { Job } from "@/lib/mock-data";
 import type { Dictionary } from "@/lib/i18n/dictionaries/types";
 
@@ -34,6 +34,9 @@ export default function JobCard({ job, dict }: { job: Job; dict: Dictionary }) {
         </p>
         <p className="mt-3 text-sm font-semibold text-primary">{content.salary}</p>
         <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-soft">
+          <span className="flex items-center gap-1">
+            <UserRound size={14} /> {dict.jobs.detail.age} {job.ageMin}–{job.ageMax}
+          </span>
           {job.accommodation && (
             <span className="flex items-center gap-1">
               <BedDouble size={14} /> {dict.jobs.detail.accommodationProvided}

@@ -99,7 +99,7 @@ export const whyChooseUs: Feature[] = [
 
 export type CountryCode = "israel" | "oman" | "georgia";
 
-export type CategoryCode = "construction" | "trade" | "services";
+export type CategoryCode = "construction" | "trade-services" | "industrial";
 
 export type JobGenderCode = "male" | "female" | "any";
 
@@ -108,6 +108,8 @@ export interface Job {
   countryCode: CountryCode;
   categoryCode: CategoryCode;
   genderCode: JobGenderCode;
+  ageMin: number;
+  ageMax: number;
   flag: string;
   accommodation: boolean;
   food: boolean;
@@ -121,6 +123,8 @@ export const jobs: Job[] = [
     countryCode: "israel",
     categoryCode: "construction",
     genderCode: "male",
+    ageMin: 25,
+    ageMax: 44,
     flag: "🇮🇱",
     accommodation: true,
     food: false,
@@ -133,30 +137,36 @@ export const jobs: Job[] = [
     countryCode: "israel",
     categoryCode: "construction",
     genderCode: "male",
+    ageMin: 25,
+    ageMax: 44,
     flag: "🇮🇱",
     accommodation: true,
     food: false,
     postedDate: "2026-09-01",
     image:
-      "https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1673865641469-34498379d8af?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "plaster-mason-israel",
     countryCode: "israel",
     categoryCode: "construction",
     genderCode: "male",
+    ageMin: 25,
+    ageMax: 44,
     flag: "🇮🇱",
     accommodation: true,
     food: false,
     postedDate: "2026-09-01",
     image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1700502335822-d4856cca490a?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "putty-worker-israel",
     countryCode: "israel",
     categoryCode: "construction",
     genderCode: "male",
+    ageMin: 25,
+    ageMax: 44,
     flag: "🇮🇱",
     accommodation: true,
     food: false,
@@ -169,24 +179,28 @@ export const jobs: Job[] = [
     countryCode: "israel",
     categoryCode: "construction",
     genderCode: "male",
+    ageMin: 25,
+    ageMax: 44,
     flag: "🇮🇱",
     accommodation: true,
     food: false,
     postedDate: "2026-09-01",
     image:
-      "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1575971637203-d6255d9947a9?auto=format&fit=crop&w=800&q=80",
   },
   {
     slug: "tile-mason-israel",
     countryCode: "israel",
     categoryCode: "construction",
     genderCode: "male",
+    ageMin: 25,
+    ageMax: 44,
     flag: "🇮🇱",
     accommodation: true,
     food: false,
     postedDate: "2026-09-01",
     image:
-      "https://images.unsplash.com/photo-1590496793929-36417d3117de?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -194,7 +208,11 @@ export const jobs: Job[] = [
 // destination or category still appears on the site (with no listings yet)
 // even before individual job postings for it are drafted.
 export const countryCodes: CountryCode[] = ["israel", "oman", "georgia"];
-export const categoryCodes: CategoryCode[] = ["construction", "trade", "services"];
+export const categoryCodes: CategoryCode[] = [
+  "construction",
+  "trade-services",
+  "industrial",
+];
 export const countryFlags: Record<CountryCode, string> = {
   israel: "🇮🇱",
   oman: "🇴🇲",
